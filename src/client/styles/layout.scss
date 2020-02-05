@@ -1,0 +1,169 @@
+$primary-color: rgb(238, 238, 238);
+$secondary-color: #008e9b;
+* {
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-family: AdineuePRO, Helvetica, Arial, sans-serif;
+  line-height: 30px;
+}
+
+// Navigation container
+.nav-container {
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-contents > ul {
+  max-width: 1500px;
+  margin: auto;
+  list-style-type: none;
+  height: auto;
+  background-color: black;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+  i {
+    display: none;
+  }
+  img {
+    filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg)
+      brightness(95%) contrast(80%);
+    object-fit: scale-down;
+    width: 80px;
+    height: 80px;
+    padding-left: 20px;
+  }
+  li {
+    &:first-child {
+      margin-right: auto;
+    }
+  }
+  div {
+    align-self: center;
+    li {
+      display: inline-block;
+      padding: 0 20px;
+      a {
+        font-family: monospace;
+        font-size: 18px;
+        font-weight: 200;
+        color: white;
+        text-decoration: none;
+        &.current {
+          border-bottom: 6px solid $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+// Mobile nav
+@media (max-width: 576px) {
+  .nav-contents > ul {
+    .nav-links {
+      display: block;
+      li {
+        display: block;
+        width: 100%;
+        text-align: center;
+        line-height: 80px;
+        border-bottom: 0.4px solid $secondary-color;
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: 8px solid $secondary-color;
+        }
+      }
+    }
+    .btn-wrap {
+      width: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+    display: block;
+    li {
+      i {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        color: white;
+        padding: 22px;
+        font-size: 2.4rem;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}
+
+.content-area {
+}
+
+// LOGIN PAGE
+.login-page {
+  margin-top: 30px;
+  text-align: center;
+  h5 {
+    line-height: 1.5em;
+    margin-bottom: 20px;
+  }
+  h6 {
+    font-family: monospace;
+    margin: 40px;
+  }
+  button {
+    margin: auto;
+  }
+}
+
+.dashboard-page {
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 999px;
+  }
+}
+
+.home-page {
+  position: relative;
+
+  .jumbotron-primary {
+    margin-bottom: -3px;
+    img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      position: relative;
+      margin: 0;
+    }
+
+    button {
+      z-index: 100;
+      top: 50%;
+      left: 50%;
+      color: green;
+      width: 200px;
+      position: absolute;
+    }
+  }
+
+  .jumbotron-secondary {
+    margin: auto;
+    img {
+      margin: auto;
+      height: 50vh;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+// REGISTER PAGE
