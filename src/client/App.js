@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Nav from './containers/Nav';
 import Register from './pages/Register';
+import Collections from './pages/Collections';
+import Cart from './pages/Cart';
 
 // optional cofiguration
 const options = {
@@ -36,6 +38,8 @@ export default function App() {
                   <Route exact path="/login-register" component={Login} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/dashboard" component={Dashboard} />
+                  <Route path="/collections" component={Collections} />
+                  <Route exact path="/cart" component={Cart} />
                 </Switch>
               </div>
             </Router>

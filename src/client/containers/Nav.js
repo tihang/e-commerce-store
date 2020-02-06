@@ -20,14 +20,22 @@ function Nav({ loggedIn, logout }) {
   // NavLinks for non authenticated users
   const guestNavLinks = () => (
     <ul>
-      <li><NavLink activeClassName="current" exact to="/"><img src={Icon} alt="ICON" /></NavLink></li>
-      <li><i onClick={toggle} role="button" tabIndex={0} onKeyDown={toggle} className={navToggle ? 'fas fa-times' : 'fas fa-bars'} /></li>
+      <li className="brand-icon"><NavLink activeClassName="current" exact to="/"><img src={Icon} alt="ICON" /></NavLink></li>
+      <li className="burger-nav"><i onClick={toggle} role="button" tabIndex={0} onKeyDown={toggle} className={navToggle ? 'fas fa-times' : 'fas fa-bars'} /></li>
       <div className={navToggle ? 'nav-links' : 'nav-links hidden'}>
         <li>
           <NavLink onClick={toggle} activeClassName="current" exact to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink onClick={toggle} activeClassName="current" exact to="/login-register">Login/Register</NavLink>
+          <NavLink onClick={toggle} activeClassName="current" exact to="/collections">Explore</NavLink>
+        </li>
+      </div>
+      <div className="nav-icons">
+        <li>
+          <NavLink activeClassName="current" exact to="/login-register"><i className="fas fa-user" /></NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-cart" /></NavLink>
         </li>
       </div>
     </ul>
@@ -36,17 +44,27 @@ function Nav({ loggedIn, logout }) {
   // NavLinks for authenticated users
   const userNavLinks = () => (
     <ul>
-      <li><NavLink activeClassName="current" exact to="/"><img src={Icon} alt="ICON" /></NavLink></li>
-      <li><i onClick={toggle} role="button" tabIndex={0} onKeyDown={toggle} className={navToggle ? 'fas fa-times' : 'fas fa-bars'} /></li>
+      <li className="brand-icon"><NavLink activeClassName="current" exact to="/"><img src={Icon} alt="ICON" /></NavLink></li>
+      <li className="burger-nav"><i onClick={toggle} role="button" tabIndex={0} onKeyDown={toggle} className={navToggle ? 'fas fa-times' : 'fas fa-bars'} /></li>
       <div className={navToggle ? 'nav-links' : 'nav-links hidden'}>
         <li>
           <NavLink onClick={toggle} activeClassName="current" exact to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink onClick={toggle} activeClassName="current" exact to="/dashboard">Dashboard</NavLink>
+          <NavLink onClick={toggle} activeClassName="current" exact to="/collections">Explore</NavLink>
         </li>
+      </div>
+      <div className="nav-icons">
         <li>
-          <NavLink onClick={() => { toggle(); logout(); alert.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register">Logout</NavLink>
+          <NavLink activeClassName="current" exact to="/dashboard"><i className="fas fa-user" /></NavLink>
+        </li>
+
+        <li>
+          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-cart" /></NavLink>
+        </li>
+
+        <li>
+          <NavLink onClick={() => { logout(); alert.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
         </li>
       </div>
     </ul>
