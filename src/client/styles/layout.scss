@@ -13,6 +13,8 @@ $secondary-color: #008e9b;
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  opacity: 77%;
 }
 .nav-contents > ul {
   max-width: 1500px;
@@ -188,4 +190,12 @@ $secondary-color: #008e9b;
     }
   }
 }
-// REGISTER PAGE
+
+// Collection-page
+
+.collection-page {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
+}

@@ -35,7 +35,7 @@ function Nav({ loggedIn, logout }) {
           <NavLink activeClassName="current" exact to="/login-register"><i className="fas fa-user" /></NavLink>
         </li>
         <li>
-          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-cart" /></NavLink>
+          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-bag"> 0</i></NavLink>
         </li>
       </div>
     </ul>
@@ -60,7 +60,7 @@ function Nav({ loggedIn, logout }) {
         </li>
 
         <li>
-          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-cart" /></NavLink>
+          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-bag"> 0</i></NavLink>
         </li>
 
         <li>

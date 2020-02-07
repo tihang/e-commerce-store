@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import Collections from './pages/Collections';
 import Cart from './pages/Cart';
 
+
 // optional cofiguration
 const options = {
   // you can also just use 'bottom center'

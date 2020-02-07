@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const methodOverride = require('method-override');
@@ -9,6 +10,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 app.use(helmet());
+app.use(morgan('short'));
 
 // Serve static contents
 app.use(express.static(path.join(`${__dirname}../../../dist`)));
@@ -23,17 +25,16 @@ app.use(methodOverride('_method'));
 // Import Routes
 app.use('/api/user', require('./routes/AuthRoute'));
 app.use('/api/profile', require('./routes/ProfileRoute'));
+app.use('/api/product', require('./routes/ProductRoute'));
 
 // Connect from the DB helper
-mongoose.connect(
-  process.env.MONGO_KEY, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    ssl: true,
-    dbName: process.env.DB_NAME
-  }
-);
+mongoose.connect(process.env.MONGO_KEY, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  ssl: true,
+  dbName: process.env.DB_NAME
+});
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
