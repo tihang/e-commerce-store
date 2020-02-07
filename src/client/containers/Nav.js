@@ -7,7 +7,7 @@ import Icon from '../assets/icons/main.png';
 
 import { userLogout } from '../redux/index';
 
-function Nav({ loggedIn, logout }) {
+function Nav({ loggedIn, logout, items }) {
   const [navToggle, setNavToggle] = useState(false);
 
   const history = useHistory();
@@ -35,7 +35,12 @@ function Nav({ loggedIn, logout }) {
           <NavLink activeClassName="current" exact to="/login-register"><i className="fas fa-user" /></NavLink>
         </li>
         <li>
-          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-bag"> 0</i></NavLink>
+          <NavLink activeClassName="current" exact to="/cart">
+            <i className="fas fa-shopping-bag">
+              {' '}
+              { items.length }
+            </i>
+          </NavLink>
         </li>
       </div>
     </ul>
@@ -60,7 +65,12 @@ function Nav({ loggedIn, logout }) {
         </li>
 
         <li>
-          <NavLink activeClassName="current" exact to="/cart"><i className="fas fa-shopping-bag"> 0</i></NavLink>
+          <NavLink activeClassName="current" exact to="/cart">
+            <i className="fas fa-shopping-bag">
+              {' '}
+              {items.length}
+            </i>
+          </NavLink>
         </li>
 
         <li>
@@ -84,13 +94,15 @@ function Nav({ loggedIn, logout }) {
 // PropTypes validation
 Nav.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 
 const mapStateToProps = state => ({
   loggedIn: state.user.loggedIn,
   loading: state.user.loading,
+  items: state.cart.items
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

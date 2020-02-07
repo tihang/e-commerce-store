@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { useAlert } from 'react-alert';
+import { addToCart } from '../redux';
 
-function ProductCard({ name, price, imgUrl }) {
+function ProductCard({ product, addItem }) {
+  const alert = useAlert();
+
   return (
     <div className="product-card-component">
       <div className="product-image-container">
-        <img alt="Product img" src={imgUrl} />
+        <img alt="Product img" src={product.imgUrl} />
       </div>
       <div className="product-detail-container">
-        <p className="product-detail-text">{name}</p>
-        <p className="product-detail-price">{`$ ${price}`}</p>
-        <button className="product-detail-button" type="button">
+        <p className="product-detail-text">{product.name}</p>
+        <p className="product-detail-price">{`$ ${product.price}`}</p>
+        <button className="product-detail-button" type="button" onClick={() => { addItem(product); alert.success('Added to Bag'); }}>
           Add
         </button>
       </div>
@@ -19,9 +24,13 @@ function ProductCard({ name, price, imgUrl }) {
 }
 
 ProductCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  imgUrl: PropTypes.string.isRequired
+  product: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  addItem: PropTypes.func.isRequired
 };
 
-export default ProductCard;
+const mapDispatchToProps = dispatch => ({
+  addItem: product => dispatch(addToCart(product))
+});
+
+
+export default connect(null, mapDispatchToProps)(ProductCard);

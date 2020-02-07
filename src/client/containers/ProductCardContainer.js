@@ -15,11 +15,8 @@ function ProductCardContainer() {
   return (
     <div className="product-card-container">
       {products.map(product => (
-        <ProductCard
-          name={product.name}
-          price={product.price}
-          imgUrl={product.imgUrl}
-        />
+        // eslint-disable-next-line no-underscore-dangle
+        <ProductCard key={product._id} product={product} />
       ))}
     </div>
   );

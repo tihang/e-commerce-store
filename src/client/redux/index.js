@@ -3,3 +3,5 @@
 export {
   resetErrorandSuccess, userLogin, userLogout, userRegister, userUploadAvatar
 } from './user/userActions';
+
+export { addToCart, removeFromCart } from './cart/cartActions';

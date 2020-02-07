@@ -23,7 +23,7 @@ function Dashboard({ isLoading, avatar, uploadAvatar }) {
   return (
     <div className="dashboard-page">
       <h1>Dashboard</h1>
-      <img className="profile-avatar" src={`api/profile/avatar/show/${avatar}`} alt="Not found" />
+      <img className="profile-avatar" src={`api/profile/avatar/show/${avatar}`} alt="User Avatar" />
       <form onSubmit={onUpload}>
         <input onChange={handleFileUpload} type="file" name="file" />
         <button onClick={onUpload} type="button">Upload</button>
