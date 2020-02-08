@@ -58,6 +58,9 @@ function Nav({ loggedIn, logout, items }) {
         <li>
           <NavLink onClick={toggle} activeClassName="current" exact to="/collections">Explore</NavLink>
         </li>
+        <li>
+          <NavLink onClick={() => { logout(); alert.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
+        </li>
       </div>
       <div className="nav-icons">
         <li>
@@ -71,10 +74,6 @@ function Nav({ loggedIn, logout, items }) {
               {items.length}
             </i>
           </NavLink>
-        </li>
-
-        <li>
-          <NavLink onClick={() => { logout(); alert.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
         </li>
       </div>
     </ul>

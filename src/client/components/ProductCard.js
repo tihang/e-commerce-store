@@ -10,14 +10,21 @@ function ProductCard({ product, addItem }) {
   return (
     <div className="product-card-component">
       <div className="product-image-container">
+        <div className="product-card-overlay">
+          <button className="product-detail-button" type="button" onClick={() => { addItem(product); alert.success('Added to Bag'); }}>
+          Quick Add
+            {' '}
+            <i className="fas fa-shopping-bag" />
+          </button>
+          <button className="product-detail-button" type="button">
+          Details
+          </button>
+        </div>
         <img alt="Product img" src={product.imgUrl} />
       </div>
       <div className="product-detail-container">
         <p className="product-detail-text">{product.name}</p>
         <p className="product-detail-price">{`$ ${product.price}`}</p>
-        <button className="product-detail-button" type="button" onClick={() => { addItem(product); alert.success('Added to Bag'); }}>
-          Add
-        </button>
       </div>
     </div>
   );

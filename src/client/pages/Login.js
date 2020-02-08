@@ -84,11 +84,7 @@ function Login({
 
   return (
     <div className="login-page">
-      <h5>Don&apos;t have an account?</h5>
-      <NavLink to="/register">
-        <LoadingSubmitButton displayText="Register" />
-      </NavLink>
-      <h6>Or Log In</h6>
+      <h2>Log In</h2>
       <form
         className="form-component"
         onSubmit={handleSubmit}
@@ -114,6 +110,11 @@ function Login({
         </p>
         <LoadingSubmitButton isLoading={isLoading} displayText="Log In" />
       </form>
+
+      <h6>Don&apos;t have an account?</h6>
+      <NavLink to="/register">
+        <LoadingSubmitButton displayText="Register" />
+      </NavLink>
     </div>
   );
 }

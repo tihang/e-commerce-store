@@ -13,9 +13,11 @@ const cartReducer = (state = initialState, action) => {
       };
 
     case CART_REMOVE:
+
       return {
         ...state,
-        items: state.items.filter(item => item.id !== item.action.payload.id)
+        // eslint-disable-next-line no-underscore-dangle
+        items: state.items.filter(item => item._id !== action.payload._id)
       };
     default:
       return state;

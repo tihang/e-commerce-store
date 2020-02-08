@@ -1,5 +1,18 @@
 $primary-color: rgb(238, 238, 238);
 $secondary-color: #008e9b;
+$btn-color-success: #00c9a7;
+$btn-color-success-light: #2ee59d;
+$shopping-btn: #009ace;
+$primary-color: rgb(238, 238, 238);
+$theme-color: rgb(0, 142, 155);
+$inactive-color: #999999;
+
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Heebo:900&display=swap");
+
+$roboto: "Roboto", sans-serif;
+$hebo: "Hebo", sans-serif;
+
 * {
   box-sizing: border-box;
   font-size: 1.4rem;
@@ -32,9 +45,9 @@ $secondary-color: #008e9b;
     filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg)
       brightness(95%) contrast(80%);
     object-fit: scale-down;
-    width: 80px;
-    height: 80px;
-    padding-left: 20px;
+    width: 100px;
+    height: 100px;
+    margin-left: 30px;
   }
   li {
     &:first-child {
@@ -47,8 +60,8 @@ $secondary-color: #008e9b;
       display: inline-block;
       padding: 0 20px;
       a {
-        font-family: monospace;
-        font-size: 18px;
+        font-family: $hebo;
+        font-size: 20px;
         font-weight: 200;
         color: white;
         text-decoration: none;
@@ -133,18 +146,13 @@ $secondary-color: #008e9b;
 
 // LOGIN PAGE
 .login-page {
-  margin-top: 30px;
+  margin-top: 60px;
   text-align: center;
-  h5 {
-    line-height: 1.5em;
-    margin-bottom: 20px;
+  h2 {
+    margin-bottom: 30px;
   }
   h6 {
-    font-family: monospace;
     margin: 40px;
-  }
-  button {
-    margin: auto;
   }
 }
 
@@ -196,6 +204,12 @@ $secondary-color: #008e9b;
 .collection-page {
   display: flex;
   flex-direction: column;
+  max-width: 1500px;
+  margin: 60px auto;
+}
+
+// CART PAGE
+.cart-page {
   max-width: 1200px;
-  margin: auto;
+  margin: 60px auto;
 }
