@@ -199,6 +199,9 @@ $hebo: "Hebo", sans-serif;
 // Collection-page
 
 .collection-page {
+  .collection-title {
+    margin-left: 100px;
+  }
   display: flex;
   flex-direction: column;
   max-width: 1500px;
@@ -207,6 +210,14 @@ $hebo: "Hebo", sans-serif;
 
 // CART PAGE
 .cart-page {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 60px auto;
+  .cart-title {
+    margin-left: 100px;
+  }
+  .cart-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
