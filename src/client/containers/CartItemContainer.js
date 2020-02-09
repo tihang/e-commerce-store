@@ -6,8 +6,7 @@ import { removeFromCart } from '../redux';
 
 function CartItemContainer({ items, removeItem }) {
   return (
-
-    <div className="cart-item-container">
+    <div>
       {items.map(item => (
         <CartItem key={item.id} item={item} removeItem={removeItem} />
       ))}

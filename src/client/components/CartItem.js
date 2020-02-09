@@ -37,7 +37,7 @@ function CartItem({ item, removeItem }) {
           </div>
 
           <div className="cart-item-controls">
-            <p className="cart-item-price">{`$ ${item.price}`}</p>
+            <p className="cart-item-price">{`$${item.price}`}</p>
           </div>
 
           <div className="cart-item-actions">

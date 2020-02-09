@@ -61,9 +61,10 @@ $hebo: "Hebo", sans-serif;
       padding: 0 20px;
       a {
         font-family: $hebo;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 200;
         color: white;
+        padding-bottom: 5px;
         text-decoration: none;
         &.current {
           border-bottom: 6px solid $secondary-color;
@@ -210,7 +211,7 @@ $hebo: "Hebo", sans-serif;
 
 // CART PAGE
 .cart-page {
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 60px auto;
   .cart-title {
     margin-left: 100px;
