@@ -4,7 +4,6 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import { useAlert } from 'react-alert';
 
-
 function CartItem({ item, removeItem }) {
   const [isOpen, setIsOpen] = useState(false);
   const [modalUrl, setModalUrl] = useState('');
@@ -38,6 +37,7 @@ function CartItem({ item, removeItem }) {
 
           <div className="cart-item-controls">
             <p className="cart-item-price">{`$${item.price}`}</p>
+            <p className="cart-item-price">{`Quantity ${item.count}`}</p>
           </div>
 
           <div className="cart-item-actions">
