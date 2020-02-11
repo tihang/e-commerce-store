@@ -54,6 +54,11 @@ $hebo: "Hebo", sans-serif;
       margin-right: auto;
     }
   }
+  li.burger-nav {
+    i {
+      display: none;
+    }
+  }
   div {
     align-self: center;
     li {

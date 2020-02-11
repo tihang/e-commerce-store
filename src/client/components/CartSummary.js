@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 import React from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
@@ -6,14 +8,18 @@ import { connect } from 'react-redux';
 const handleToken = (token) => {
   console.log(token);
 };
-function CartSummary({ total }) {
+
+const getTotal = (items = []) => items
+  .reduce((accmulator, item) => accmulator += (item.price * item.count), 0);
+
+function CartSummary({ items }) {
   return (
     <div className="cart-summary-component">
       <h3 className="summary-heading">ORDER SUMMARY</h3>
       <div className="summary-container">
         <div className="summary-item">
-          <span className="summary-label">3 Items</span>
-          <span className="summary-value">{`$${total}`}</span>
+          <span className="summary-label">{`${items.length} Items`}</span>
+          <span className="summary-value">{`$${getTotal(items)}`}</span>
         </div>
         <div className="summary-item">
           <span className="summary-label">Delivery</span>
@@ -25,14 +31,14 @@ function CartSummary({ total }) {
         </div>
         <div className="summary-item">
           <span className="summary-label">Total</span>
-          <span className="summary-value">{`$${total}`}</span>
+          <span className="summary-value">{`$${getTotal(items)}`}</span>
         </div>
         <StripeCheckout
           name="Checkout"
           stripeKey="pk_test_svmEPVMAHL0JkgJVOB9l9joz00Os4dDgY0"
           billingAddress
           shippingAddress
-          price={total * 100}
+          price={getTotal(items) * 100}
           token={handleToken}
         />
       </div>
@@ -41,11 +47,11 @@ function CartSummary({ total }) {
 }
 
 CartSummary.propTypes = {
-  total: PropTypes.number.isRequired
+  items: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 const mapStateToProps = state => ({
-  total: state.cart.total
+  items: state.cart.items
 });
 
 export default connect(mapStateToProps, null)(CartSummary);

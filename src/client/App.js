@@ -4,6 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/app.scss';
 import { store, persistor } from './redux/store';
 import Home from './pages/Home';

@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import { useAlert } from 'react-alert';
+import { Modal, Button } from 'react-bootstrap';
 
 function CartItem({ item, removeItem }) {
+  // State for image modal
   const [isOpen, setIsOpen] = useState(false);
   const [modalUrl, setModalUrl] = useState('');
   const alert = useAlert();
+
+  // State for remove from cart confirmation
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <React.Fragment>
@@ -26,9 +33,12 @@ function CartItem({ item, removeItem }) {
                 <i className="fas fa-search-plus" />
               </button>
             </div>
+
+            {/* Cart Item image */}
             <img className="cart-item-img" src={item.imgUrl} alt="Item img" />
           </div>
 
+          {/* Cart Item image popup modal */}
           {isOpen && <Lightbox mainSrc={modalUrl} onCloseRequest={() => setIsOpen(false)} />}
           <div className="cart-item-description">
             <p className="cart-item-name">{item.name}</p>
@@ -36,23 +46,45 @@ function CartItem({ item, removeItem }) {
           </div>
 
           <div className="cart-item-controls">
+            <p className="cart-item-count">{`QTY: ${item.count}`}</p>
             <p className="cart-item-price">{`$${item.price}`}</p>
-            <p className="cart-item-price">{`Quantity ${item.count}`}</p>
           </div>
 
+          {/* Remove favorite and edit action buttons */}
           <div className="cart-item-actions">
-            <button
-              className="cart-item-remove"
-              type="button"
-              onClick={() => {
-                removeItem(item);
-                alert.success('Removed item');
-              }}
-            >
+            {/* Remove from cart button */}
+            <button className="cart-item-remove" type="button" onClick={handleShow}>
               <i className="fas fa-times" />
             </button>
+            {/* Modal to confirm remove from cart */}
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Confirmation</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>{`Remove ${item.name} from cart?`}</Modal.Body>
+              <Modal.Footer>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    removeItem(item);
+                    alert.error('Removed');
+                    handleClose();
+                  }}
+                >
+                  Yes, remove
+                </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                  Nevermind
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            {/* Add to wishlist button */}
             <button className="cart-item-wishlist" type="button">
               <i className="fas fa-heart" />
+            </button>
+            {/* Edit quantity button */}
+            <button className="cart-item-edit" type="button">
+              <i className="far fa-edit" />
             </button>
           </div>
         </div>
