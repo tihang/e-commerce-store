@@ -96,6 +96,7 @@ $hebo: "Hebo", sans-serif;
         text-align: center;
         line-height: 80px;
         border-bottom: 0.4px solid $secondary-color;
+
         &:first-child {
           border-top: none;
         }
@@ -107,29 +108,26 @@ $hebo: "Hebo", sans-serif;
 
     // Shoe Icon
     .brand-icon {
-      display: flex;
-      justify-content: center;
+      transform: scale(0.7);
+      text-align: center;
     }
 
     // Icons
-    div.nav-icons {
-      display: inline-block;
+    .nav-icons {
+      display: flex;
       position: absolute;
       right: 0;
       top: 0;
-      padding-top: 25px;
-      li a i {
-        font-size: 1.4rem;
+      align-items: flex-start;
+      padding-top: 30px;
+      i {
+        font-size: 1.3rem;
       }
     }
     // For menu toggle
     .hidden {
       display: none;
     }
-    // .btn-wrap {
-    //   width: 100%;
-    // }
-
     // Burger nav selector
     li.burger-nav {
       i {
@@ -211,13 +209,13 @@ $hebo: "Hebo", sans-serif;
   display: flex;
   flex-direction: column;
   max-width: 1500px;
-  margin: 60px auto;
+  margin: 30px auto;
 }
 
 // CART PAGE
 .cart-page {
   max-width: 1500px;
-  margin: 60px auto;
+  margin: 30px auto;
   .cart-title {
     margin-left: 100px;
   }

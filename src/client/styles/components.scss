@@ -184,46 +184,48 @@ input:-webkit-autofill {
 .product-card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 50px;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: flex-start;
 }
 
 // Product Card Component
 .product-card-component {
   display: flex;
   flex-direction: column;
-  margin: 1%;
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  padding: 32px;
-  border: 1px solid $secondary-color;
+  align-items: flex-start;
+  margin: 20px 4px;
+  width: 20%;
+  transition: all 0.3s ease-in-out 0s;
   .product-image-container {
     position: relative;
+    height: 100%;
+    width: 100%;
     img {
-      max-width: 100%;
-      max-height: 400px;
+      width: 100%;
+      height: 300px;
       object-fit: cover;
     }
   }
   .product-detail-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .product-detail-text {
-    margin-top: 20px;
-    font-family: $roboto;
-    color: $inactive-color;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.8;
-  }
-  .product-detail-price {
-    color: $inactive-color;
-    font-family: monospace;
+    align-items: flex-start;
+
+    .product-detail-text {
+      display: block;
+      font-family: $hebo;
+      color: $inactive-color;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .product-detail-price {
+      display: block;
+      color: $inactive-color;
+      font-family: monospace;
+      line-height: 1.8;
+    }
   }
   .product-detail-button {
     background-color: $secondary-color;
@@ -239,37 +241,50 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: 751px) {
+@media (max-width: 1024px) {
   .product-card-component {
-    width: 45%;
+    .product-image-container {
+      img {
+        height: 250px;
+      }
+    }
   }
 }
 
+@media (max-width: 768px) {
+  .product-card-component {
+    width: 40%;
+    .product-image-container {
+      img {
+        height: 300px;
+      }
+    }
+  }
+}
 @media (max-width: 576px) {
   .product-card-component {
-    width: 70%;
+    .product-image-container {
+      img {
+        height: 200px;
+      }
+    }
   }
 }
-
 .product-card-overlay {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
   height: 100%;
   width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out 0s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .product-card-component:hover .product-card-overlay {
   opacity: 1;
+}
+
+.product-card-component:hover {
+  transform: scale(1.06);
 }
 
 // CART COMPONENT
@@ -287,10 +302,11 @@ input:-webkit-autofill {
     .cart-item-img-container {
       position: relative;
       cursor: pointer;
+      transition: transform 0.5s ease-in-out 0s;
       .cart-item-img-overlay {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.3);
-        transition: opacity 0.3s ease-in-out 0s;
+        background-color: rgba(white, 0.2);
+        transition: opacity 0.5s ease-in-out 0s;
         height: 100%;
         width: 100%;
         opacity: 0;
@@ -305,11 +321,15 @@ input:-webkit-autofill {
       &:hover .cart-item-img-overlay {
         opacity: 1;
       }
+
       .cart-item-img {
         width: 280px;
         height: 280px;
         object-fit: cover;
       }
+    }
+    &:hover .cart-item-img-container {
+      transform: scale(1.03);
     }
     // container contains name and color
     .cart-item-description {
@@ -334,9 +354,19 @@ input:-webkit-autofill {
     // container contains price and quantity
     .cart-item-controls {
       line-height: 28px;
+      margin-top: -48px;
       .cart-item-count {
         font-weight: 600;
         font-family: $roboto;
+      }
+      .cart-item-edit {
+        padding: 10px;
+        border: none;
+        background-color: inherit;
+        font-size: 1.3rem;
+        &:hover {
+          color: $shopping-btn;
+        }
       }
       .cart-item-price {
         font-family: monospace;
@@ -353,6 +383,7 @@ input:-webkit-autofill {
         padding: 10px;
         border: none;
         background-color: inherit;
+        font-size: 1.3rem;
         &:hover {
           color: tomato;
         }
@@ -361,16 +392,9 @@ input:-webkit-autofill {
         padding: 10px;
         border: none;
         background-color: inherit;
+        font-size: 1.3rem;
         &:hover {
           color: palevioletred;
-        }
-      }
-      .cart-item-edit {
-        padding: 10px;
-        border: none;
-        background-color: inherit;
-        &:hover {
-          color: $shopping-btn;
         }
       }
     }
@@ -387,10 +411,10 @@ input:-webkit-autofill {
 @media (max-width: 595px) {
   .cart-item-component {
     .cart-item-container {
-      max-width: 500px;
       justify-content: center;
       margin: auto;
       flex-direction: column;
+      padding: 20px;
       .cart-item-img-container {
         .cart-item-img-overlay {
           background-color: rgba(0, 0, 0, 0);
@@ -410,13 +434,28 @@ input:-webkit-autofill {
           }
         }
       }
+      // // container contains price and quantity
+      .cart-item-controls {
+        margin-top: 8px;
+        .cart-item-edit {
+          padding: 10px;
+          font-size: 1.5rem;
+          border: none;
+          background-color: inherit;
+          &:hover {
+            color: palevioletred;
+          }
+        }
+      }
 
       .cart-item-actions {
-        align-self: flex-end;
         display: flex;
+        align-self: flex-end;
         flex-direction: column-reverse;
+        margin-top: -64px;
         .cart-item-remove {
           padding: 10px;
+          font-size: 1.5rem;
           border: none;
           background-color: inherit;
           &:hover {
@@ -425,14 +464,7 @@ input:-webkit-autofill {
         }
         .cart-item-wishlist {
           padding: 10px;
-          border: none;
-          background-color: inherit;
-          &:hover {
-            color: palevioletred;
-          }
-        }
-        .cart-item-edit {
-          padding: 10px;
+          font-size: 1.5rem;
           border: none;
           background-color: inherit;
           &:hover {
@@ -443,6 +475,7 @@ input:-webkit-autofill {
     }
   }
 }
+
 @media (max-width: 375px) {
   .cart-item-component {
     max-width: 280px;
@@ -453,8 +486,8 @@ input:-webkit-autofill {
       flex-direction: column;
       .cart-item-img-container {
         .cart-item-img {
-          width: 180px;
-          height: 180px;
+          width: 230px;
+          height: 230px;
           object-fit: cover;
         }
       }

@@ -47,6 +47,10 @@ function CartItem({ item, removeItem }) {
 
           <div className="cart-item-controls">
             <p className="cart-item-count">{`QTY: ${item.count}`}</p>
+            {/* Edit quantity button */}
+            <button className="cart-item-edit" type="button">
+              <i className="far fa-edit" />
+            </button>
             <p className="cart-item-price">{`$${item.price}`}</p>
           </div>
 
@@ -57,7 +61,7 @@ function CartItem({ item, removeItem }) {
               <i className="fas fa-times" />
             </button>
             {/* Modal to confirm remove from cart */}
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} centered style={{ fontFamily: 'monospace' }}>
               <Modal.Header closeButton>
                 <Modal.Title>Confirmation</Modal.Title>
               </Modal.Header>
@@ -82,10 +86,7 @@ function CartItem({ item, removeItem }) {
             <button className="cart-item-wishlist" type="button">
               <i className="fas fa-heart" />
             </button>
-            {/* Edit quantity button */}
-            <button className="cart-item-edit" type="button">
-              <i className="far fa-edit" />
-            </button>
+
           </div>
         </div>
       </div>
