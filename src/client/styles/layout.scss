@@ -203,13 +203,15 @@ $hebo: "Hebo", sans-serif;
 // Collection-page
 
 .collection-page {
-  .collection-title {
-    margin-left: 100px;
-  }
   display: flex;
   flex-direction: column;
   max-width: 1500px;
   margin: 30px auto;
+  .collection-title {
+    margin-left: 100px;
+  }
+  .product-filter-component {
+  }
 }
 
 // CART PAGE
