@@ -210,22 +210,24 @@ input:-webkit-autofill {
     }
   }
   .product-detail-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-top: 8px;
     .product-detail-text {
-      display: block;
+      display: flex;
       font-family: $hebo;
       color: $inactive-color;
       font-size: 14px;
       font-weight: 400;
     }
     .product-detail-price {
-      display: block;
+      display: flex;
       color: $inactive-color;
-      font-family: monospace;
+      font-family: $roboto;
       line-height: 1.8;
+      font-size: 14px;
+      margin: 8px 0;
     }
   }
   .product-detail-button {
@@ -288,10 +290,118 @@ input:-webkit-autofill {
   transform: scale(1.06);
 }
 
+// to set bootstrap modal width
+.modal-90w {
+  min-width: 90%;
+}
+
+//PRODUCT CARD COMPONENT MODAL
+.product-modal {
+  display: flex;
+  .product-modal-img {
+    margin: 10px;
+    img {
+      width: 800px;
+      height: auto;
+    }
+  }
+  .product-modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .product-modal-description {
+      margin: 10px;
+      font-weight: 400;
+      font-family: monospace;
+      font-size: 15px;
+    }
+    .product-modal-btns {
+      align-content: center;
+      justify-content: center;
+      .product-modal-btn {
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        width: 200px;
+        display: block;
+        color: white;
+        font-weight: 400;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 5px;
+        margin: 20px;
+        // Styling the add to cart btn
+        .shopping-bag-btn {
+          display: flex;
+          justify-content: center;
+          .btn-text {
+            font-family: $roboto;
+          }
+          .btn-icon {
+            width: 100%;
+            width: 20%;
+          }
+        }
+      }
+      .add {
+        background-color: $secondary-color;
+      }
+      .remove {
+        color: white;
+        background-color: gray;
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .product-modal {
+    .product-modal-img {
+      img {
+        width: 600px;
+        height: auto;
+      }
+    }
+  }
+}
+@media (max-width: 1050px) {
+  .product-modal {
+    .product-modal-img {
+      img {
+        width: 500px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .product-modal {
+    .product-modal-img {
+      img {
+        width: 400px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 758px) {
+  .product-modal {
+    flex-direction: column;
+    .product-modal-img {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
 //Product Filters
 .product-filter-component {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 
@@ -398,6 +508,38 @@ input:-webkit-autofill {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+}
+
+@media (max-width: 721px) {
+  .product-filter-component {
+    flex-direction: column;
+    .filter-category {
+      width: 100%;
+      .filter-dropdown {
+        width: 100%;
+        margin: 10px auto;
+      }
+    }
+    // Overriding bootstrap dropdown menu
+    .dropdown {
+      .dropdown-menu {
+        width: 100%;
+      }
+    }
+
+    .check-items {
+      margin-left: 10px;
+    }
+    .sort-filter {
+      margin-left: 0;
+      align-self: center;
+      color: black;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: $roboto;
+      margin: 5px;
+    }
   }
 }
 

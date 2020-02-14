@@ -1,8 +1,12 @@
-import { GET_PRODUCTS, SET_FILTER } from './productTypes';
+import { GET_PRODUCTS, SET_COLOR_FILTER, UNSET_COLOR_FILTER } from './productTypes';
 
 const initialState = {
-  products: [],
-  filter: []
+  result: [],
+  filter: {
+    gender: {},
+    color: [],
+    price: ''
+  }
 };
 
 const productReducer = (state = initialState, action) => {
@@ -10,13 +14,25 @@ const productReducer = (state = initialState, action) => {
     case GET_PRODUCTS:
       return {
         ...state,
-        products: action.payload
+        result: action.payload
       };
 
-    case SET_FILTER:
+    case SET_COLOR_FILTER:
       return {
         ...state,
-        filter: action.payload
+        filter: {
+          ...state.filter,
+          color: [...state.filter.color, action.payload]
+        }
+      };
+
+    case UNSET_COLOR_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          color: [...state.filter.color.filter(color => color !== action.payload)]
+        }
       };
 
     default:

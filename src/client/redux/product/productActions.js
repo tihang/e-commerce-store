@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, SET_FILTER } from './productTypes';
+import { GET_PRODUCTS, SET_COLOR_FILTER, UNSET_COLOR_FILTER } from './productTypes';
 
 export const getProductsRequest = () => ({
   type: GET_PRODUCTS
@@ -14,7 +14,12 @@ export const getProductsFailure = products => ({
   payload: products
 });
 
-export const setFilter = filter => ({
-  type: SET_FILTER,
-  pyaload: filter
+export const setColorFilterAction = filter => ({
+  type: SET_COLOR_FILTER,
+  payload: filter
+});
+
+export const unsetColorFilterAction = filter => ({
+  type: UNSET_COLOR_FILTER,
+  payload: filter
 });

@@ -18,6 +18,9 @@ const ProductSchema = new mongoose.Schema({
   color: {
     type: String
   },
+  gender: {
+    type: String
+  },
   imgUrl: {
     type: String
   },

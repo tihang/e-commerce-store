@@ -5,3 +5,5 @@ export {
 } from './user/userActions';
 
 export { addToCart, removeFromCart } from './cart/cartActions';
+
+export { setColorFilterAction, unsetColorFilterAction } from './product/productActions';

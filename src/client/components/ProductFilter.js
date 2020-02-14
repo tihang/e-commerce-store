@@ -1,7 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { setColorFilterAction, unsetColorFilterAction } from '../redux';
 
-function ProductFilter() {
+
+function ProductFilter({ setColorFilter, unsetColorFilter }) {
+  const handleCheckboxChange = (e) => {
+    if (e.target.checked) {
+      setColorFilter(e.target.value);
+    } else {
+      unsetColorFilter(e.target.value);
+    }
+  };
+
+
   return (
     // Wrapper Div
     <div className="product-filter-component">
@@ -38,22 +51,22 @@ function ProductFilter() {
           <Dropdown.Menu>
             <div className="check-items">
               <label htmlFor="check-black" className="container">
-                <input type="checkbox" onChange={e => e.target.checked} id="check-black" value="black" />
+                <input type="checkbox" onChange={handleCheckboxChange} id="check-black" name="Black" value="Black" />
                 <span className="checkmark" />
               Black
               </label>
               <label htmlFor="check-white" className="container">
-                <input type="checkbox" onChange={e => e.target.checked} id="check-white" value="white" />
+                <input type="checkbox" onChange={handleCheckboxChange} id="check-white" name="White" value="White" />
                 <span className="checkmark" />
               White
               </label>
               <label htmlFor="check-blue" className="container">
-                <input type="checkbox" onChange={e => e.target.checked} id="check-blue" value="blue" />
+                <input type="checkbox" onChange={handleCheckboxChange} id="check-blue" name="Blue" value="Blue" />
                 <span className="checkmark" />
               Blue
               </label>
               <label htmlFor="check-green" className="container">
-                <input type="checkbox" onChange={e => e.target.checked} id="check-green" value="green" />
+                <input type="checkbox" onChange={handleCheckboxChange} id="check-green" name="Green" value="Green" />
                 <span className="checkmark" />
               Green
               </label>
@@ -103,4 +116,21 @@ function ProductFilter() {
     </div>
   );
 }
-export default ProductFilter;
+
+// const mapStateToProps = state => ({
+//   color: state.product.color
+// });
+
+
+const mapDispatchToProps = dispatch => ({
+  setColorFilter: filter => dispatch(setColorFilterAction(filter)),
+  unsetColorFilter: filter => dispatch(unsetColorFilterAction(filter))
+});
+
+ProductFilter.propTypes = {
+  setColorFilter: PropTypes.func.isRequired,
+  unsetColorFilter: PropTypes.func.isRequired
+};
+
+
+export default connect(null, mapDispatchToProps)(ProductFilter);

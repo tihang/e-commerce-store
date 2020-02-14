@@ -40,7 +40,7 @@ export default function App() {
                   <Route exact path="/login-register" component={Login} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/dashboard" component={Dashboard} />
-                  <Route path="/collections" component={Collections} />
+                  <Route exact path="/collections" component={Collections} />
                   <Route exact path="/cart" component={Cart} />
                 </Switch>
               </div>

@@ -1,2 +1,3 @@
 export const GET_PRODUCTS = 'GET_PRODUCTS';
-export const SET_FILTER = 'SET_FILTER';
+export const SET_COLOR_FILTER = 'SET_COLOR_FILTER';
+export const UNSET_COLOR_FILTER = 'UNSET_COLOR_FILTER';
