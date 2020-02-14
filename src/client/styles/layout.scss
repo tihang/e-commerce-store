@@ -168,11 +168,40 @@ $hebo: "Hebo", sans-serif;
 .home-page {
   position: relative;
 
+  .promo-video-wrapper {
+    margin-top: -100px;
+    height: 120vh;
+    width: 100%;
+    position: relative;
+    .promo-video-overlay-content {
+      position: absolute;
+      bottom: 25%;
+      z-index: 100;
+      height: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      button {
+        height: 70px;
+        width: 200px;
+        color: $secondary-color;
+        width: 200px;
+        font-family: $hebo;
+        font-size: 26px;
+        border: none;
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
   .jumbotron-primary {
+    margin-top: -60px;
     margin-bottom: -3px;
     img {
       width: 100%;
-      height: 100vh;
+      height: 500px;
       object-fit: cover;
       position: relative;
       margin: 0;
@@ -192,7 +221,7 @@ $hebo: "Hebo", sans-serif;
     margin: auto;
     img {
       margin: auto;
-      height: 50vh;
+      height: 400px;
       width: 100%;
       object-fit: cover;
     }
@@ -208,8 +237,6 @@ $hebo: "Hebo", sans-serif;
   margin: 30px auto;
   .collection-title {
     margin-left: 100px;
-  }
-  .product-filter-component {
   }
 }
 

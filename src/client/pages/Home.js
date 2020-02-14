@@ -1,14 +1,34 @@
 import React from 'react';
+import BackgroundVideo from 'react-background-video-player';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
     <div className="home-page">
-      <div className="jumbotron-primary">
-        <img src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="img" />
+      <div className="promo-video-wrapper">
+        <BackgroundVideo src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/enUS/ASW_DAMExPUSHA_1920x1080_89_h264_1.mp4" />
+        <div className="promo-video-overlay-content">
+          <Link to="/collections">
+            <button type="button">
+              <p>Explore Now</p>
+              <i className="fas fa-arrow-right" />
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* <div className="jumbotron-primary">
+        <img
+          src="https://images.unsplash.com/photo-1518002171953-a080ee817e1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+          alt="img"
+        />
       </div>
       <div className="jumbotron-secondary">
-        <img src="https://images.unsplash.com/photo-1537476102677-80bac0ab1d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80 1534w," alt="img" />
-      </div>
+        <img
+          src="https://images.unsplash.com/photo-1537476102677-80bac0ab1d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1534&q=80 1534w,"
+          alt="img"
+        />
+      </div> */}
     </div>
   );
 }
