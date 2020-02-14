@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EmailValidator from 'email-validator';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useAlert } from 'react-alert';
+import { toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
 import { userRegister, resetErrorandSuccess } from '../redux/index';
 import LoadingSubmitButton from '../components/LoadingSubmitButton';
@@ -22,12 +22,10 @@ function Register({
     }
   });
 
-  // Showing alert message and clearing it from redux store after 4 seconds
-  const alert = useAlert();
   // Reset error message from store
   useEffect(() => {
     if (error.length > 0) {
-      alert.error(error);
+      toast.error(error);
     }
     return () => {
       resetErrAndScss();
@@ -37,7 +35,7 @@ function Register({
   // Reset success message from store
   useEffect(() => {
     if (success.length > 0) {
-      alert.success(success);
+      toast.success(success);
     }
     return () => {
       resetErrAndScss();

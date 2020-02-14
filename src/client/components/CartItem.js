@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
-import { useAlert } from 'react-alert';
+import { toast } from 'react-toastify';
 import { Modal, Button } from 'react-bootstrap';
 
 function CartItem({ item, removeItem }) {
   // State for image modal
   const [isOpen, setIsOpen] = useState(false);
   const [modalUrl, setModalUrl] = useState('');
-  const alert = useAlert();
+
 
   // State for remove from cart confirmation
   const [show, setShow] = useState(false);
@@ -71,7 +71,7 @@ function CartItem({ item, removeItem }) {
                   variant="danger"
                   onClick={() => {
                     removeItem(item);
-                    alert.error('Removed');
+                    toast.info('Removed');
                     handleClose();
                   }}
                 >

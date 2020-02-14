@@ -3,7 +3,7 @@ import EmailValidator from 'email-validator';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect, NavLink } from 'react-router-dom';
-import { useAlert } from 'react-alert';
+import { toast } from 'react-toastify';
 import { userLogin, resetErrorandSuccess } from '../redux';
 import LoadingSubmitButton from '../components/LoadingSubmitButton';
 
@@ -21,12 +21,10 @@ function Login({
   });
 
 
-  // Alert message setup
-  const alert = useAlert();
   // Flash error if error
   useEffect(() => {
     if (error.length > 0) {
-      alert.error(error);
+      toast.error(error);
     }
     return () => {
       resetErrAndSscc();
@@ -35,7 +33,7 @@ function Login({
 
   useEffect(() => {
     if (success.length > 0) {
-      alert.success('Logged in');
+      toast.success('Logged in');
     }
     return () => {
       resetErrAndSscc();

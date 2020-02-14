@@ -3,16 +3,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'react-bootstrap';
-import { useAlert } from 'react-alert';
 import { connect } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
+import { toast } from 'react-toastify';
 import { addToCart } from '../redux';
 
 function ProductCard({ product, addItem }) {
   // SHOW STATE FOR MODAL
   const [show, setShow] = useState(false);
 
-  const alert = useAlert();
   return (
     <React.Fragment>
       <div type="button" className="product-card-component" onClick={() => setShow(true)}>
@@ -39,7 +38,6 @@ function ProductCard({ product, addItem }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
           <div className="product-modal">
             <div className="product-modal-img">
               <Carousel>
@@ -57,19 +55,34 @@ function ProductCard({ product, addItem }) {
             <div className="product-modal-body">
               <p className="product-modal-description">{product.description}</p>
               <div className="product-modal-btns">
-                <button className="product-modal-btn add" type="button" onClick={() => { addItem(product); setShow(false); alert.success('Added to Bag'); }}>
+                <button
+                  className="product-modal-btn add"
+                  type="button"
+                  onClick={() => {
+                    addItem(product);
+                    setShow(false);
+                    toast.success('Added to bag');
+                  }}
+                >
                   <div className="shopping-bag-btn">
                     <p className="btn-text">ADD TO BAG</p>
-                    <div className="btn-icon"><i className="fas fa-shopping-bag" /></div>
+                    <div className="btn-icon">
+                      <i className="fas fa-shopping-bag" />
+                    </div>
                   </div>
                 </button>
-                <button className="product-modal-btn remove" type="button" onClick={() => { setShow(false); }}>
+                <button
+                  className="product-modal-btn remove"
+                  type="button"
+                  onClick={() => {
+                    setShow(false);
+                  }}
+                >
                   Keep shopping
                 </button>
               </div>
             </div>
           </div>
-
         </Modal.Body>
       </Modal>
     </React.Fragment>
