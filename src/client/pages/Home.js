@@ -9,10 +9,14 @@ export default function Home() {
         <BackgroundVideo src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/enUS/ASW_DAMExPUSHA_1920x1080_89_h264_1.mp4" />
         <div className="promo-video-overlay-content">
           <Link to="/collections">
-            <button type="button">
-              Explore Now
-              {'       '}
-              <i className="fas fa-arrow-right" />
+            <button className="promo-video-btn" type="button">
+              <div className="btn-overlay" />
+              <div className="btn-background-overlay" />
+              <div className="btn-content-wrapper">
+                <p>Explore</p>
+                {'       '}
+                <i className="fas fa-arrow-right" />
+              </div>
             </button>
           </Link>
         </div>

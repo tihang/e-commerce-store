@@ -175,22 +175,71 @@ $hebo: "Hebo", sans-serif;
     position: relative;
     .promo-video-overlay-content {
       position: absolute;
-      bottom: 20%;
+      bottom: 25%;
       z-index: 100;
       height: 100px;
       width: 100%;
       display: flex;
       justify-content: center;
-      button {
+      .promo-video-btn {
+        position: relative;
         height: 60px;
         width: 300px;
-        color: $secondary-color;
-        background-color: white;
+        color: whitesmoke;
+        background-color: whitesmoke;
         font-family: $hebo;
         font-size: 26px;
         border: none;
+        p {
+          position: absolute;
+          left: 30px;
+          bottom: 4px;
+          z-index: 50;
+          text-transform: uppercase;
+        }
         i {
-          font-size: 1rem;
+          position: absolute;
+          z-index: 50;
+          right: 60px;
+          bottom: 2px;
+          font-size: 2rem;
+        }
+        .btn-background-overlay {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: 0%;
+          height: 100%;
+          z-index: 40;
+          background-color: whitesmoke;
+          transition: width 0.2s ease-in-out 0s;
+        }
+        .btn-overlay {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          height: 100%;
+          width: 100%;
+          background-color: black;
+          color: white;
+        }
+        &:hover {
+          color: black;
+          font-weight: 600;
+          background-color: black;
+          // Spin keyframe for video overlay button arrow
+          @keyframes spin {
+            100% {
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }
+          i {
+            animation: spin 0.4s linear 1;
+          }
+        }
+        &:hover .btn-background-overlay {
+          width: 100%;
         }
       }
     }
