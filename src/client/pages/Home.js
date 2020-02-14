@@ -10,7 +10,8 @@ export default function Home() {
         <div className="promo-video-overlay-content">
           <Link to="/collections">
             <button type="button">
-              <p>Explore Now</p>
+              Explore Now
+              {'       '}
               <i className="fas fa-arrow-right" />
             </button>
           </Link>
