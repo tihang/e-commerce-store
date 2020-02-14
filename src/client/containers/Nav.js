@@ -26,12 +26,15 @@ function Nav({ loggedIn, logout, items }) {
           <NavLink onClick={toggle} activeClassName="current" exact to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink onClick={toggle} activeClassName="current" exact to="/collections">Explore</NavLink>
+
+          <NavLink onClick={toggle} activeClassName="current" exact to="/login-register">
+            <p>Login/ Register</p>
+          </NavLink>
         </li>
       </div>
       <div className="nav-icons">
         <li>
-          <NavLink activeClassName="current" exact to="/login-register"><i className="fas fa-user" /></NavLink>
+          <NavLink activeClassName="current" exact to="/collections"><i className="fas fa-search" /></NavLink>
         </li>
         <li>
           <NavLink activeClassName="current" exact to="/cart">
@@ -55,7 +58,10 @@ function Nav({ loggedIn, logout, items }) {
           <NavLink onClick={toggle} activeClassName="current" exact to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink onClick={toggle} activeClassName="current" exact to="/collections">Explore</NavLink>
+          <NavLink onClick={toggle} activeClassName="current" exact to="/dashboard">
+            Profile
+            <i className="fas fa-user" />
+          </NavLink>
         </li>
         <li>
           <NavLink onClick={() => { logout(); toast.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
@@ -63,7 +69,7 @@ function Nav({ loggedIn, logout, items }) {
       </div>
       <div className="nav-icons">
         <li>
-          <NavLink activeClassName="current" exact to="/dashboard"><i className="fas fa-user" /></NavLink>
+          <NavLink activeClassName="current" exact to="/collections"><i className="fas fa-search" /></NavLink>
         </li>
 
         <li>

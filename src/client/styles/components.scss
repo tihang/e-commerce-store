@@ -511,14 +511,29 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: 721px) {
+// Hide filter toggle button on bigger screen
+.filter-toggle-button-wrapper {
+  display: none;
+}
+.filter-wrapper-close-button {
+  display: none;
+}
+
+@media (max-width: 759px) {
   .product-filter-component {
+    padding-top: 100px;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 83px;
+    z-index: 80;
+    background-color: whitesmoke;
     flex-direction: column;
     .filter-category {
       width: 100%;
       .filter-dropdown {
         width: 100%;
-        margin: 10px auto;
+        margin: 30px auto;
       }
     }
     // Overriding bootstrap dropdown menu
@@ -529,16 +544,51 @@ input:-webkit-autofill {
     }
 
     .check-items {
-      margin-left: 10px;
+      margin: 20px auto;
+      width: 180px;
+      label {
+        margin: 30px auto;
+      }
     }
     .sort-filter {
-      margin-left: 0;
-      align-self: center;
-      color: black;
+      display: none;
+    }
+  }
+  .hide {
+    display: none;
+  }
+  // Open-close button for filter overlay
+  .filter-toggle-button-wrapper {
+    display: flex;
+    position: sticky;
+    top: 83px;
+    background-color: whitesmoke;
+    z-index: 50;
+    justify-content: space-evenly;
+    .filter-button {
+      height: 40px;
+      width: 100px;
+      font-size: 1.1rem;
       font-weight: 600;
-      text-transform: uppercase;
-      font-family: $roboto;
-      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      background-color: $secondary-color;
+      color: whitesmoke;
+    }
+  }
+  //  Button to close mobile filter overlay
+  .filter-wrapper-close-button {
+    margin-top: 50px;
+    display: block;
+    align-self: center;
+    button {
+      background-color: none;
+      border: none;
+      width: 80px;
+      height: 80px;
+      i {
+        font-size: 2.3rem;
+      }
     }
   }
 }
