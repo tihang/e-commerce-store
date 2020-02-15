@@ -41,7 +41,7 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
         {/* Gender Select Filter */}
         <div className="filter-category">
           <Dropdown>
-            <Dropdown.Toggle className="filter-dropdown" variant="secondary" id="dropdown-basic">
+            <Dropdown.Toggle className="filter-dropdown" variant="info" id="dropdown-basic">
             Gender
             </Dropdown.Toggle>
 
@@ -64,7 +64,7 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
         {/* Color Select Filter */}
         <div className="filter-category">
           <Dropdown>
-            <Dropdown.Toggle className="filter-dropdown" variant="secondary" id="dropdown-basic">
+            <Dropdown.Toggle className="filter-dropdown" variant="info" id="dropdown-basic">
             Color
             </Dropdown.Toggle>
 
@@ -97,7 +97,7 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
         {/* Price Select Filter */}
         <div className="filter-category">
           <Dropdown>
-            <Dropdown.Toggle className="filter-dropdown" variant="secondary" id="dropdown-basic">
+            <Dropdown.Toggle className="filter-dropdown" variant="info" id="dropdown-basic">
             Price
             </Dropdown.Toggle>
 
@@ -137,7 +137,7 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
         {/* Close button for mobile filter  */}
         <div className="filter-wrapper-close-button">
           <button type="button" onClick={() => setFilterToggle(filter => !filter)}>
-            <i className="fas fa-times" />
+            <i className="fas fa-check" />
           </button>
         </div>
       </div>

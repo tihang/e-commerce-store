@@ -670,6 +670,7 @@ input:-webkit-autofill {
         border: none;
         background-color: inherit;
         font-size: 1.3rem;
+        outline: none;
         &:hover {
           color: $shopping-btn;
         }
@@ -690,6 +691,7 @@ input:-webkit-autofill {
         border: none;
         background-color: inherit;
         font-size: 1.3rem;
+        outline: none;
         &:hover {
           color: tomato;
         }
@@ -699,6 +701,7 @@ input:-webkit-autofill {
         border: none;
         background-color: inherit;
         font-size: 1.3rem;
+        outline: none;
         &:hover {
           color: palevioletred;
         }

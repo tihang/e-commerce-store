@@ -212,7 +212,17 @@ $hebo: "Hebo", sans-serif;
           height: 100%;
           z-index: 40;
           background-color: whitesmoke;
-          transition: width 0.2s ease-in-out 0s;
+          transition: width 0.4s ease-in-out 0s;
+        }
+        .btn-background-overlay2 {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 0%;
+          height: 100%;
+          z-index: 40;
+          background-color: black;
+          transition: width 0.4s ease-in-out 0s;
         }
         .btn-overlay {
           position: absolute;
@@ -224,7 +234,6 @@ $hebo: "Hebo", sans-serif;
           color: white;
         }
         &:hover {
-          color: black;
           font-weight: 600;
           background-color: black;
           // Spin keyframe for video overlay button arrow
@@ -239,6 +248,9 @@ $hebo: "Hebo", sans-serif;
           }
         }
         &:hover .btn-background-overlay {
+          width: 100%;
+        }
+        &:hover .btn-background-overlay2 {
           width: 100%;
         }
       }

@@ -83,7 +83,7 @@ function CartItem({ item, removeItem }) {
               </Modal.Footer>
             </Modal>
             {/* Add to wishlist button */}
-            <button className="cart-item-wishlist" type="button">
+            <button onClick={() => toast.success(<span role="img" aria-label="Love">Saved to your &#x1F496; for later</span>)} className="cart-item-wishlist" type="button">
               <i className="fas fa-heart" />
             </button>
 

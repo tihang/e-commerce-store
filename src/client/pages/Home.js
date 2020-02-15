@@ -12,6 +12,7 @@ export default function Home() {
             <button className="promo-video-btn" type="button">
               <div className="btn-overlay" />
               <div className="btn-background-overlay" />
+              <div className="btn-background-overlay2" />
               <div className="btn-content-wrapper">
                 <p>Explore</p>
                 {'       '}
