@@ -6,4 +6,8 @@ export {
 
 export { addToCart, removeFromCart } from './cart/cartActions';
 
-export { setColorFilterAction, unsetColorFilterAction } from './product/productActions';
+export {
+  getProductsRequest, getProductsSuccess,
+  setColorFilterAction, unsetColorFilterAction,
+  setPriceFilterAction, unsetPriceFilterAction
+} from './product/productActions';

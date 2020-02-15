@@ -55,15 +55,7 @@ function ProductCard({ product, addItem }) {
             <div className="product-modal-body">
               <p className="product-modal-description">{product.description}</p>
               <div className="product-modal-btns">
-                {/* <button
-                  className="theme-btn"
-                  type="button"
-                  onClick={() => {
-                    addItem(product);
-                    setShow(false);
-                    toast.success('Added to bag');
-                  }}
-                > */}
+                {/* Add to bag button */}
                 <ThemeButton
                   displayText="Add to bag"
                   onClick={() => {
@@ -72,9 +64,9 @@ function ProductCard({ product, addItem }) {
                     toast.success('Added to bag');
                   }}
                 />
-
+                {/* Keep shopping button */}
                 <button
-                  className="product-modal-btn remove"
+                  className="product-modal-btn"
                   type="button"
                   onClick={() => {
                     setShow(false);

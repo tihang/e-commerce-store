@@ -184,7 +184,7 @@ input:-webkit-autofill {
 .theme-btn {
   position: relative;
   height: 60px;
-  width: 300px;
+  width: 280px;
   color: whitesmoke;
   background-color: whitesmoke;
   font-family: $hebo;
@@ -255,13 +255,11 @@ input:-webkit-autofill {
   flex-direction: column;
   cursor: pointer;
   align-items: flex-start;
-  margin: 20px 4px;
-  width: 20%;
+  margin: 10px 1px;
+  width: 24%;
   transition: all 0.3s ease-in-out 0s;
   .product-image-container {
     position: relative;
-    height: 100%;
-    width: 100%;
     img {
       display: block;
       width: 100%;
@@ -316,7 +314,7 @@ input:-webkit-autofill {
 
 @media (max-width: 768px) {
   .product-card-component {
-    width: 40%;
+    width: 47%;
     .product-image-container {
       img {
         height: 300px;
@@ -334,7 +332,7 @@ input:-webkit-autofill {
   }
 }
 .product-card-overlay {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   position: absolute;
   height: 100%;
   width: 100%;
@@ -347,7 +345,7 @@ input:-webkit-autofill {
 }
 
 .product-card-component:hover {
-  transform: scale(1.06);
+  transform: scale(1.02);
 }
 
 // to set bootstrap modal width
@@ -383,29 +381,15 @@ input:-webkit-autofill {
       .product-modal-btn {
         display: flex;
         flex-direction: row;
+        font-family: $hebo;
         height: 50px;
         width: 200px;
         display: block;
         color: white;
-        font-weight: 400;
         font-size: 1.1rem;
         border: none;
         border-radius: 5px;
         margin: 30px;
-        // Styling the add to cart btn
-        .shopping-bag-btn {
-          display: flex;
-          justify-content: center;
-          .btn-text {
-            font-family: $roboto;
-          }
-          .btn-icon {
-            width: 100%;
-            width: 20%;
-          }
-        }
-      }
-      .remove {
         color: white;
         background-color: gray;
       }
@@ -586,6 +570,7 @@ input:-webkit-autofill {
     flex-direction: column;
     .filter-category {
       width: 100%;
+      padding: 40px;
       .filter-dropdown {
         width: 100%;
         margin: 30px auto;
@@ -593,6 +578,9 @@ input:-webkit-autofill {
     }
     // Overriding bootstrap dropdown menu
     .dropdown {
+      button {
+        padding: 20px;
+      }
       .dropdown-menu {
         width: 100%;
       }

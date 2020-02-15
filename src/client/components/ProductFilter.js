@@ -2,24 +2,47 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setColorFilterAction, unsetColorFilterAction } from '../redux';
+import {
+  setColorFilterAction, unsetColorFilterAction,
+  setPriceFilterAction, unsetPriceFilterAction
+} from '../redux';
 
 
-function ProductFilter({ setColorFilter, unsetColorFilter }) {
+function ProductFilter({
+  filterArray, setColorFilter, unsetColorFilter, setPriceFilter, unsetPriceFilter
+}) {
+  // Filter overlay toggle state for small screens
   const [filterToggle, setFilterToggle] = useState(false);
 
-  const handleCheckboxChange = (e) => {
+  // COLOR FILTER FUNCTION HANDLERS
+  // Handler to set/unset redux color filter array
+  const handleColorCheckboxChange = (e) => {
     if (e.target.checked) {
       setColorFilter(e.target.value);
     } else {
       unsetColorFilter(e.target.value);
     }
   };
+  // Handler for checkbox input checked
+  // Returns true if given color is in redux state
+  const isColorChecked = color => (!!filterArray.color.includes(color));
+
+  // Handler to set/unset redux price filter array
+  const handlePriceCheckboxChange = (e) => {
+    if (e.target.checked) {
+      setPriceFilter(e.target.value);
+    } else {
+      unsetPriceFilter(e.target.value);
+    }
+  };
+
+  const isPriceChecked = price => (!!filterArray.price.includes(price));
 
 
   return (
     <React.Fragment>
       <div className="filter-toggle-button-wrapper">
+        {/* Sort select for small screens */}
         <div className="sort-filter">
           <label htmlFor="sort-select">
             <p>Sort By:</p>
@@ -38,29 +61,6 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
       </div>
       {/* // Wrapper Div */}
       <div className={filterToggle ? 'product-filter-component' : 'product-filter-component hide'}>
-        {/* Gender Select Filter */}
-        <div className="filter-category">
-          <Dropdown>
-            <Dropdown.Toggle className="filter-dropdown" variant="info" id="dropdown-basic">
-            Gender
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <div className="check-items">
-                <label htmlFor="check-men" className="container">
-                  <input type="checkbox" onChange={e => e.target.checked} id="check-men" value="men" />
-                  <span className="checkmark" />
-              Men
-                </label>
-                <label htmlFor="check-women" className="container">
-                  <input type="checkbox" onChange={e => e.target.checked} id="check-women" value="women" />
-                  <span className="checkmark" />
-              Women
-                </label>
-              </div>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
         {/* Color Select Filter */}
         <div className="filter-category">
           <Dropdown>
@@ -71,22 +71,22 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
             <Dropdown.Menu>
               <div className="check-items">
                 <label htmlFor="check-black" className="container">
-                  <input type="checkbox" onChange={handleCheckboxChange} id="check-black" name="Black" value="Black" />
+                  <input type="checkbox" checked={isColorChecked('Black')} onChange={handleColorCheckboxChange} id="check-black" name="Black" value="Black" />
                   <span className="checkmark" />
               Black
                 </label>
                 <label htmlFor="check-white" className="container">
-                  <input type="checkbox" onChange={handleCheckboxChange} id="check-white" name="White" value="White" />
+                  <input type="checkbox" checked={isColorChecked('White')} onChange={handleColorCheckboxChange} id="check-white" name="White" value="White" />
                   <span className="checkmark" />
               White
                 </label>
                 <label htmlFor="check-blue" className="container">
-                  <input type="checkbox" onChange={handleCheckboxChange} id="check-blue" name="Blue" value="Blue" />
+                  <input type="checkbox" checked={isColorChecked('Blue')} onChange={handleColorCheckboxChange} id="check-blue" name="Blue" value="Blue" />
                   <span className="checkmark" />
               Blue
                 </label>
                 <label htmlFor="check-green" className="container">
-                  <input type="checkbox" onChange={handleCheckboxChange} id="check-green" name="Green" value="Green" />
+                  <input type="checkbox" checked={isColorChecked('Green')} onChange={handleColorCheckboxChange} id="check-green" name="Green" value="Green" />
                   <span className="checkmark" />
               Green
                 </label>
@@ -104,19 +104,19 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
             <Dropdown.Menu>
               <div className="check-items">
                 <label htmlFor="check-under-100" className="container">
-                  <input type="checkbox" onChange={e => e.target.checked} id="check-under-100" value="lessthan100" />
+                  <input type="checkbox" checked={isPriceChecked('lessthan100')} onChange={handlePriceCheckboxChange} id="check-under-100" value="lessthan100" />
                   <span className="checkmark" />
               Less than $100
                 </label>
                 <label htmlFor="check-100-to-150" className="container">
-                  <input type="checkbox" onChange={e => e.target.checked} id="check-100-to-150" value="100to150" />
+                  <input type="checkbox" checked={isPriceChecked('100to200')} onChange={handlePriceCheckboxChange} id="check-100-to-150" value="100to200" />
                   <span className="checkmark" />
-              $100 to $150
+              $100 to $200
                 </label>
                 <label htmlFor="check-150-or-more" className="container">
-                  <input type="checkbox" onChange={e => e.target.checked} id="check-150-or-more" value="150ormore" />
+                  <input type="checkbox" checked={isPriceChecked('morethan200')} onChange={handlePriceCheckboxChange} id="check-150-or-more" value="morethan200" />
                   <span className="checkmark" />
-              $150 or more
+              $200 or more
                 </label>
               </div>
             </Dropdown.Menu>
@@ -145,20 +145,26 @@ function ProductFilter({ setColorFilter, unsetColorFilter }) {
   );
 }
 
-// const mapStateToProps = state => ({
-//   color: state.product.color
-// });
+const mapStateToProps = state => ({
+  filterArray: state.product.filter
+});
 
 
 const mapDispatchToProps = dispatch => ({
   setColorFilter: filter => dispatch(setColorFilterAction(filter)),
-  unsetColorFilter: filter => dispatch(unsetColorFilterAction(filter))
+  unsetColorFilter: filter => dispatch(unsetColorFilterAction(filter)),
+  setPriceFilter: filter => dispatch(setPriceFilterAction(filter)),
+  unsetPriceFilter: filter => dispatch(unsetPriceFilterAction(filter))
 });
 
 ProductFilter.propTypes = {
+  filterArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   setColorFilter: PropTypes.func.isRequired,
-  unsetColorFilter: PropTypes.func.isRequired
+  unsetColorFilter: PropTypes.func.isRequired,
+  setPriceFilter: PropTypes.func.isRequired,
+  unsetPriceFilter: PropTypes.func.isRequired,
+
 };
 
 
-export default connect(null, mapDispatchToProps)(ProductFilter);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductFilter);
