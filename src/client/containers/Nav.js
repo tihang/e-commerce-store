@@ -59,12 +59,11 @@ function Nav({ loggedIn, logout, items }) {
         </li>
         <li>
           <NavLink onClick={toggle} activeClassName="current" exact to="/dashboard">
-            Profile
             <i className="fas fa-user" />
           </NavLink>
         </li>
         <li>
-          <NavLink onClick={() => { logout(); toast.success('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
+          <NavLink onClick={() => { logout(); toast.info('Logged out'); history.push('/login-register'); }} activeClassName="current" exact to="/login-register"><i className="fas fa-sign-out-alt" /></NavLink>
         </li>
       </div>
       <div className="nav-icons">

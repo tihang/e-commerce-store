@@ -152,7 +152,7 @@ $hebo: "Hebo", sans-serif;
     margin-bottom: 30px;
   }
   h6 {
-    margin: 40px;
+    margin-top: 80px;
   }
 }
 
@@ -180,7 +180,7 @@ $hebo: "Hebo", sans-serif;
       height: 100px;
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
       .promo-video-btn {
         position: relative;
         height: 60px;
@@ -237,14 +237,17 @@ $hebo: "Hebo", sans-serif;
           font-weight: 600;
           background-color: black;
           // Spin keyframe for video overlay button arrow
-          @keyframes spin {
+          @keyframes move {
+            0% {
+              transform: translateX(0);
+            }
             100% {
-              -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
+              transform: translateX(30px);
             }
           }
           i {
-            animation: spin 0.4s linear 1;
+            animation: move 0.3s ease-in-out 1;
+            transform: translateX(30px);
           }
         }
         &:hover .btn-background-overlay {
@@ -253,6 +256,16 @@ $hebo: "Hebo", sans-serif;
         &:hover .btn-background-overlay2 {
           width: 100%;
         }
+      }
+    }
+  }
+  @media (max-width: 685px) {
+    .promo-video-wrapper {
+      .promo-video-overlay-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 220px;
       }
     }
   }

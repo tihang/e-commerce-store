@@ -180,6 +180,66 @@ input:-webkit-autofill {
   font-family: monospace;
 }
 
+// THEME BUTTON
+.theme-btn {
+  position: relative;
+  height: 60px;
+  width: 300px;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  font-family: $hebo;
+  font-size: 26px;
+  border: none;
+  .btn-content-wrapper {
+    display: flex;
+    justify-content: center;
+    p {
+      text-transform: uppercase;
+      z-index: 50;
+      font-weight: 600;
+    }
+  }
+  .btn-background-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 0%;
+    height: 100%;
+    z-index: 40;
+    background-color: whitesmoke;
+    transition: width 0.4s ease-in-out 0s;
+  }
+  .btn-background-overlay2 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0%;
+    height: 100%;
+    z-index: 40;
+    background-color: black;
+    transition: width 0.4s ease-in-out 0s;
+  }
+  .btn-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+  }
+  &:hover {
+    font-weight: 600;
+    background-color: black;
+  }
+  &:hover .btn-background-overlay {
+    width: 100%;
+  }
+  &:hover .btn-background-overlay2 {
+    width: 100%;
+  }
+}
+
 // CONTAINER to hold product items
 .product-card-container {
   display: flex;
@@ -300,6 +360,7 @@ input:-webkit-autofill {
   display: flex;
   .product-modal-img {
     margin: 10px;
+    z-index: 99;
     img {
       width: 800px;
       height: auto;
@@ -308,7 +369,7 @@ input:-webkit-autofill {
   .product-modal-body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     .product-modal-description {
       margin: 10px;
@@ -330,7 +391,7 @@ input:-webkit-autofill {
         font-size: 1.1rem;
         border: none;
         border-radius: 5px;
-        margin: 20px;
+        margin: 30px;
         // Styling the add to cart btn
         .shopping-bag-btn {
           display: flex;
@@ -344,9 +405,6 @@ input:-webkit-autofill {
           }
         }
       }
-      .add {
-        background-color: $secondary-color;
-      }
       .remove {
         color: white;
         background-color: gray;
@@ -354,7 +412,7 @@ input:-webkit-autofill {
     }
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
   .product-modal {
     .product-modal-img {
       img {
@@ -364,7 +422,7 @@ input:-webkit-autofill {
     }
   }
 }
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
   .product-modal {
     .product-modal-img {
       img {
@@ -375,7 +433,7 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 975px) {
   .product-modal {
     .product-modal-img {
       img {
@@ -386,7 +444,7 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: 758px) {
+@media (max-width: 858px) {
   .product-modal {
     flex-direction: column;
     .product-modal-img {
@@ -402,12 +460,11 @@ input:-webkit-autofill {
 .product-filter-component {
   display: flex;
   justify-content: flex-start;
-  border-top: 1px solid black;
   border-bottom: 1px solid black;
 
   //Dropdown select filters button
   .filter-dropdown {
-    background-color: rgba($color: white, $alpha: 0);
+    background-color: white;
     width: 200px;
     height: 100%;
     color: black;
@@ -418,8 +475,6 @@ input:-webkit-autofill {
     font-family: $roboto;
     box-shadow: none;
     &:hover {
-      border-right: 1px solid black;
-      border-left: 1px solid black;
       border-radius: 0;
     }
   }
@@ -564,14 +619,14 @@ input:-webkit-autofill {
     top: 83px;
     background-color: whitesmoke;
     z-index: 50;
+    padding: 10px 0;
     justify-content: space-evenly;
     .filter-button {
       height: 40px;
       width: 100px;
       font-size: 1.1rem;
-      font-weight: 600;
       border: none;
-      border-radius: 10px;
+      border-radius: 4px;
       background-color: $secondary-color;
       color: whitesmoke;
     }

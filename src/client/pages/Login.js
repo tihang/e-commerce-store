@@ -6,6 +6,7 @@ import { Redirect, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { userLogin, resetErrorandSuccess } from '../redux';
 import LoadingSubmitButton from '../components/LoadingSubmitButton';
+import ThemeButton from '../components/ThemeButton';
 
 function Login({
   isLoading, login, loggedIn, error, success, resetErrAndSscc
@@ -111,7 +112,7 @@ function Login({
 
       <h6>Don&apos;t have an account?</h6>
       <NavLink to="/register">
-        <LoadingSubmitButton displayText="Register" />
+        <ThemeButton displayText="Register" />
       </NavLink>
     </div>
   );

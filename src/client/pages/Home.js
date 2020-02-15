@@ -6,8 +6,24 @@ export default function Home() {
   return (
     <div className="home-page">
       <div className="promo-video-wrapper">
-        <BackgroundVideo src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/enUS/ASW_DAMExPUSHA_1920x1080_89_h264_1.mp4" />
+        <BackgroundVideo
+          containerWidth={100}
+          containerHeight={100}
+          src="https://brand.assets.adidas.com/video/upload/q_auto,vc_auto/video/upload/enUS/ASW_DAMExPUSHA_1920x1080_89_h264_1.mp4"
+        />
         <div className="promo-video-overlay-content">
+          <Link to="/login-register">
+            <button className="promo-video-btn" type="button">
+              <div className="btn-overlay" />
+              <div className="btn-background-overlay" />
+              <div className="btn-background-overlay2" />
+              <div className="btn-content-wrapper">
+                <p>Join now!</p>
+                {'       '}
+                <i className="fas fa-arrow-right" />
+              </div>
+            </button>
+          </Link>
           <Link to="/collections">
             <button className="promo-video-btn" type="button">
               <div className="btn-overlay" />

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Carousel from 'react-bootstrap/Carousel';
 import { toast } from 'react-toastify';
 import { addToCart } from '../redux';
+import ThemeButton from './ThemeButton';
 
 function ProductCard({ product, addItem }) {
   // SHOW STATE FOR MODAL
@@ -54,22 +55,24 @@ function ProductCard({ product, addItem }) {
             <div className="product-modal-body">
               <p className="product-modal-description">{product.description}</p>
               <div className="product-modal-btns">
-                <button
-                  className="product-modal-btn add"
+                {/* <button
+                  className="theme-btn"
                   type="button"
                   onClick={() => {
                     addItem(product);
                     setShow(false);
                     toast.success('Added to bag');
                   }}
-                >
-                  <div className="shopping-bag-btn">
-                    <p className="btn-text">ADD TO BAG</p>
-                    <div className="btn-icon">
-                      <i className="fas fa-shopping-bag" />
-                    </div>
-                  </div>
-                </button>
+                > */}
+                <ThemeButton
+                  displayText="Add to bag"
+                  onClick={() => {
+                    addItem(product);
+                    setShow(false);
+                    toast.success('Added to bag');
+                  }}
+                />
+
                 <button
                   className="product-modal-btn remove"
                   type="button"
