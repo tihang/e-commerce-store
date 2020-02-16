@@ -9,7 +9,7 @@ const initialState = {
   loading: false,
   filter: {
     color: [],
-    price: []
+    price: ''
   }
 };
 
@@ -46,7 +46,7 @@ const productReducer = (state = initialState, action) => {
         ...state,
         filter: {
           ...state.filter,
-          price: [...state.filter.price, action.payload]
+          price: action.payload
         }
       };
     case UNSET_PRICE_FILTER:
@@ -54,7 +54,7 @@ const productReducer = (state = initialState, action) => {
         ...state,
         filter: {
           ...state.filter,
-          price: [...state.filter.price.filter(price => price !== action.payload)]
+          price: ''
         }
       };
     default:

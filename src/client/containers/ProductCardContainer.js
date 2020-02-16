@@ -9,7 +9,7 @@ import { getProductsRequest, getProductsSuccess } from '../redux';
 
 
 function ProductCardContainer({
-  color, loading, fetchRequest, fetchSuccess
+  filterArray, loading, fetchRequest, fetchSuccess
 }) {
   // PRODUCTS STATE TO HOLD PRODUCTS COMING FROM BACKEND
   const [products, setProducts] = useState([]);
@@ -20,7 +20,7 @@ function ProductCardContainer({
   useEffect(() => {
     fetchRequest();
     setProducts([]);
-    Axios.post('/api/product/filter', { color }).then((response) => {
+    Axios.post('/api/product/filter', { filterArray }).then((response) => {
       setProducts(response.data);
       fetchSuccess();
     }).catch(err => console.log(err));
@@ -29,11 +29,11 @@ function ProductCardContainer({
   useEffect(() => {
     fetchRequest();
     setProducts([]);
-    Axios.post('/api/product/filter', { color }).then((response) => {
+    Axios.post('/api/product/filter', { filterArray }).then((response) => {
       setProducts(response.data);
       fetchSuccess();
     }).catch(err => console.log(err));
-  }, [color]);
+  }, [filterArray]);
 
   return (
     <div className="product-card-container">
@@ -47,7 +47,7 @@ function ProductCardContainer({
 }
 
 const mapStateToProps = state => ({
-  color: state.product.filter.color,
+  filterArray: state.product.filter,
   loading: state.product.loading
 });
 
@@ -58,7 +58,7 @@ const mapDispatchToProps = dispatch => ({
 
 
 ProductCardContainer.propTypes = {
-  color: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filterArray: PropTypes.arrayOf(PropTypes.object).isRequired,
   loading: PropTypes.bool.isRequired,
   fetchRequest: PropTypes.func.isRequired,
   fetchSuccess: PropTypes.func.isRequired

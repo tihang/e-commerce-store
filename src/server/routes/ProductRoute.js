@@ -35,13 +35,48 @@ router.get('/index', async (req, res) => {
 // @ROUTE POST /api/product/filter
 router.post('/filter', async (req, res) => {
   try {
-    const { color } = req.body;
-    let products;
-    products = await Product.find({ color: { $in: color } });
+    const { color, price } = req.body.filterArray;
 
-    if (products.length === 0) {
-      products = await Product.find();
-    }
+    // Switch function which changes each PriceText from input fields to useable mongo query
+    const translatePriceToQuery = (priceText) => {
+      switch (priceText) {
+        case 'lessthan100':
+          return {
+            $lt: 100
+          };
+        case '100to200':
+          return {
+            $lt: 200,
+            $gt: 100
+          };
+        case 'morethan200':
+          return {
+            $gt: 200
+          };
+        default:
+          return {
+            $gt: 0,
+            $lt: 10000
+          };
+      }
+    };
+    // Function to handle empty color array
+    // Returns all colors if array is empty
+    const translateColorToQuery = (colorArr) => {
+      if (colorArr.length <= 0) {
+        return ['Black', 'White', 'Blue', 'Green'];
+      }
+      return colorArr;
+    };
+
+    // Using helper function to handle incorrect input
+    const colorQuery = translateColorToQuery(color);
+    const priceQuery = translatePriceToQuery(price);
+
+
+    const products = await Product.find({
+      $and: [{ color: { $in: colorQuery } }, { price: priceQuery }]
+    });
     res.status(200).json(products);
   } catch (error) {
     res.status(400).json(error);

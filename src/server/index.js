@@ -1,7 +1,6 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const helmet = require('helmet');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -9,7 +8,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 const app = express();
-app.use(helmet());
+
 app.use(morgan('short'));
 
 // Serve static contents

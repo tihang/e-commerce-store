@@ -108,8 +108,8 @@ function ProductFilter({
                   <span className="checkmark" />
               Less than $100
                 </label>
-                <label htmlFor="check-100-to-150" className="container">
-                  <input type="checkbox" checked={isPriceChecked('100to200')} onChange={handlePriceCheckboxChange} id="check-100-to-150" value="100to200" />
+                <label htmlFor="check-100-to-200" className="container">
+                  <input type="checkbox" checked={isPriceChecked('100to200')} onChange={handlePriceCheckboxChange} id="check-100-to-200" value="100to200" />
                   <span className="checkmark" />
               $100 to $200
                 </label>
